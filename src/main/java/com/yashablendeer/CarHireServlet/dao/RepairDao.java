@@ -3,11 +3,12 @@ package com.yashablendeer.CarHireServlet.dao;
 import com.yashablendeer.CarHireServlet.model.Repair;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface RepairDao {
-    Repair findById(long id);
+    Optional<Repair> findById(long id);
     List<Repair> findAll();
-    Repair findRepairByOrderId(long id);
+    Optional<Repair> findRepairByOrderId(long id);
     void deleteById(long id);
     void deleteByOrderId(long id);
 

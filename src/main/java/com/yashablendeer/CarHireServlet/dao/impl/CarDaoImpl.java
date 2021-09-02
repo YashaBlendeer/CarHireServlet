@@ -73,17 +73,6 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public void deleteById(long id) {
-        try(PreparedStatement preparedStatement=connection.prepareStatement(DELETE_CAR_BY_ID)){
-            preparedStatement.setLong(1, id);
-            preparedStatement.executeUpdate();
-        }catch(SQLException ex){
-            ex.printStackTrace();
-//            logger.severe(ex.getMessage());
-        }
-    }
-
-    @Override
     public List<Car> findAll() {
         List<Car> cars = new ArrayList<>();
         try (PreparedStatement ps = connection.prepareStatement(FIND_ALL_CARS)) {
@@ -97,4 +86,17 @@ public class CarDaoImpl implements CarDao {
         }
         return cars;
     }
+
+    @Override
+    public void deleteById(long id) {
+        try(PreparedStatement ps=connection.prepareStatement(DELETE_CAR_BY_ID)){
+            ps.setLong(1, id);
+            ps.executeUpdate();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+//            logger.severe(ex.getMessage());
+        }
+    }
+
+
 }

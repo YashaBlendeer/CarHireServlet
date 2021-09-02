@@ -24,11 +24,6 @@ public class OrderExtract {
         order.setStartTime(rs.getTimestamp("start_time").toLocalDateTime());
         order.setEndTime(rs.getTimestamp("end_time").toLocalDateTime());
 
-//        Long carId = rs.getLong("car_id");
-//        Long orderId = rs.getLong("order_id");
-//        order.setCar(rs.getObject("car_id", Car.class));
-//        order.setUser(rs.getObject("user_id", User.class));
-
         return order;
     }
 }

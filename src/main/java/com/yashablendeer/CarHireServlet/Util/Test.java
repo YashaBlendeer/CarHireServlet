@@ -2,6 +2,7 @@ package com.yashablendeer.CarHireServlet.Util;
 
 import com.yashablendeer.CarHireServlet.dao.impl.CarDaoImpl;
 import com.yashablendeer.CarHireServlet.dao.impl.OrderDaoImpl;
+import com.yashablendeer.CarHireServlet.dao.impl.RepairDaoImpl;
 import com.yashablendeer.CarHireServlet.dao.impl.UserDaoImpl;
 
 import java.sql.Connection;
@@ -15,9 +16,19 @@ public class Test {
         UserDaoImpl userImpl = new UserDaoImpl(conn);
         CarDaoImpl carImpl = new CarDaoImpl(conn);
         OrderDaoImpl orderImpl = new OrderDaoImpl(conn);
-        System.out.println(orderImpl.findById(72));
-        System.out.println(orderImpl.findAll());
-        System.out.println(orderImpl.findAllByCarId(31));
+        RepairDaoImpl repairImpl = new RepairDaoImpl(conn);
+
+//        System.out.println(repairImpl.findById(73));
+//        System.out.println(repairImpl.findAll());
+//        System.out.println(repairImpl.findRepairByOrderId(72));
+
+
+
+//        orderImpl.deleteById(96);
+//        System.out.println(orderImpl.findAll());
+//        System.out.println(orderImpl.findById(72));
+//        System.out.println(orderImpl.findAllByCarId(31));
+
 //        System.out.println(userImpl.findUserById(3));
 //        System.out.println(userImpl.findAll());
 //        System.out.println(userImpl.findByUserName("hh"));

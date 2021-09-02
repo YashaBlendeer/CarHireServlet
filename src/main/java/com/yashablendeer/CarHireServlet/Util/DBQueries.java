@@ -36,5 +36,12 @@ public class DBQueries {
     public static final String FIND_ORDER_BY_ID = "select * from orders where order_id = ?";
     public static final String FIND_ALL_ORDERS = "select * from orders";
     public static final String FIND_ORDERS_BY_CAR_ID = "select * from orders where car_id = ?";
+    public static final String DELETE_ORDER_BY_ID = "delete from orders where order_id = ?";
+
+
+//    EXTRACT REPAIR QUERIES
+    public static final String FIND_REPAIR_BY_ID = "select * from repairs where id = ?";
+    public static final String FIND_ALL_REPAIRS = "select * from repairs";
+    public static final String FIND_REPAIR_BY_ORDER_ID = "select * from repairs where order_id = ?";
 
 }

@@ -125,7 +125,13 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public void deleteById(long id) {
-
+        try(PreparedStatement ps = connection.prepareStatement(DELETE_ORDER_BY_ID)){
+            ps.setLong(1, id);
+            ps.executeUpdate();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+//            logger.severe(ex.getMessage());
+        }
     }
 
     @Override
