@@ -4,18 +4,15 @@ import com.yashablendeer.CarHireServlet.dao.OrderDao;
 import com.yashablendeer.CarHireServlet.dao.impl.extractUtil.CarExtract;
 import com.yashablendeer.CarHireServlet.dao.impl.extractUtil.OrderExtract;
 import com.yashablendeer.CarHireServlet.dao.impl.extractUtil.UserExtract;
-import com.yashablendeer.CarHireServlet.model.Car;
 import com.yashablendeer.CarHireServlet.model.Order;
+import com.yashablendeer.CarHireServlet.model.Status;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.yashablendeer.CarHireServlet.Util.DBQueries.*;
+import static com.yashablendeer.CarHireServlet.util.DBQueries.*;
 
 public class OrderDaoImpl implements OrderDao {
 
@@ -23,6 +20,52 @@ public class OrderDaoImpl implements OrderDao {
 
     public OrderDaoImpl(Connection connection) {
         this.connection = connection;
+    }
+
+    @Override
+    public boolean addOrder(Order order) {
+        try (PreparedStatement ps = connection.prepareStatement(ADD_ORDER)) {
+            ps.setString(1, "");
+            ps.setTimestamp(2, Timestamp.valueOf(order.getStartTime()));
+            ps.setTimestamp(3, Timestamp.valueOf(order.getEndTime()));
+            ps.setLong(4, order.getOrderPrice());
+            ps.setString(5, order.getPassport());
+            ps.setString(6, String.valueOf(Status.UNPAYED));
+            ps.setString(7, String.valueOf(Status.READY));
+            ps.setBoolean(8, order.getWithDriver());
+            ps.setLong(9, 1);
+            ps.setLong(10, 2);
+//            ps.setLong(9, order.getCar().getId());
+//            ps.setLong(10, order.getUser().getId());
+            ps.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+//            logger.severe(ex.getMessage());
+        }
+        return true;
+    }
+
+    @Override
+    public boolean addOrder(Order order, long carId, long userId) {
+        try (PreparedStatement ps = connection.prepareStatement(ADD_ORDER)) {
+            ps.setString(1, "");
+            ps.setTimestamp(2, Timestamp.valueOf(order.getStartTime()));
+            ps.setTimestamp(3, Timestamp.valueOf(order.getEndTime()));
+            ps.setLong(4, order.getOrderPrice());
+            ps.setString(5, order.getPassport());
+            ps.setString(6, String.valueOf(Status.UNPAYED));
+            ps.setString(7, String.valueOf(Status.READY));
+            ps.setBoolean(8, order.getWithDriver());
+            ps.setLong(9, carId);
+            ps.setLong(10, userId);
+            ps.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+//            logger.severe(ex.getMessage());
+        }
+        return true;
     }
 
     @Override
@@ -124,14 +167,16 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public void deleteById(long id) {
+    public boolean deleteById(long id) {
         try(PreparedStatement ps = connection.prepareStatement(DELETE_ORDER_BY_ID)){
             ps.setLong(1, id);
             ps.executeUpdate();
         }catch(SQLException ex){
             ex.printStackTrace();
+            return true;
 //            logger.severe(ex.getMessage());
         }
+        return false;
     }
 
     @Override

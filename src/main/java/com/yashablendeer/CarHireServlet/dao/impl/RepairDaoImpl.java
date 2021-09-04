@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.yashablendeer.CarHireServlet.Util.DBQueries.*;
+import static com.yashablendeer.CarHireServlet.util.DBQueries.*;
 
 public class RepairDaoImpl implements RepairDao {
 

@@ -2,9 +2,8 @@ package com.yashablendeer.CarHireServlet.dao.impl;
 
 import com.yashablendeer.CarHireServlet.dao.CarDao;
 import com.yashablendeer.CarHireServlet.dao.impl.extractUtil.CarExtract;
-import com.yashablendeer.CarHireServlet.dao.impl.extractUtil.UserExtract;
 import com.yashablendeer.CarHireServlet.model.Car;
-import com.yashablendeer.CarHireServlet.model.User;
+import com.yashablendeer.CarHireServlet.model.Status;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.yashablendeer.CarHireServlet.Util.DBQueries.*;
+import static com.yashablendeer.CarHireServlet.util.DBQueries.*;
 
 public class CarDaoImpl implements CarDao {
 
@@ -22,6 +21,23 @@ public class CarDaoImpl implements CarDao {
 
     public CarDaoImpl(Connection connection) {
         this.connection = connection;
+    }
+
+    @Override
+    public boolean addCar(Car car) {
+        try (PreparedStatement ps = connection.prepareStatement(ADD_CAR)) {
+            ps.setString(1, car.getCarMark());
+            ps.setString(2, car.getCarName());
+            ps.setLong(3, car.getCarPrice());
+            ps.setString(4, car.getCarQuality());
+            ps.setString(5, String.valueOf(Status.READY));
+            ps.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+//            logger.severe(ex.getMessage());
+        }
+        return true;
     }
 
     @Override
@@ -88,14 +104,16 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public void deleteById(long id) {
+    public boolean deleteById(long id) {
         try(PreparedStatement ps=connection.prepareStatement(DELETE_CAR_BY_ID)){
             ps.setLong(1, id);
             ps.executeUpdate();
         }catch(SQLException ex){
             ex.printStackTrace();
+            return false;
 //            logger.severe(ex.getMessage());
         }
+        return true;
     }
 
 

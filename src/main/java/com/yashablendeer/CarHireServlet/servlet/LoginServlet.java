@@ -1,6 +1,5 @@
 package com.yashablendeer.CarHireServlet.servlet;
 
-import com.yashablendeer.CarHireServlet.dao.UserDaoOld;
 import com.yashablendeer.CarHireServlet.model.User;
 
 import javax.servlet.*;

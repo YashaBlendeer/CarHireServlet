@@ -1,7 +1,9 @@
 package com.yashablendeer.CarHireServlet.dao.impl;
 
+import com.yashablendeer.CarHireServlet.util.BCrypt;
 import com.yashablendeer.CarHireServlet.dao.UserDao;
 import com.yashablendeer.CarHireServlet.dao.impl.extractUtil.UserExtract;
+import com.yashablendeer.CarHireServlet.model.Role;
 import com.yashablendeer.CarHireServlet.model.User;
 
 import java.sql.Connection;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.yashablendeer.CarHireServlet.Util.DBQueries.*;
+import static com.yashablendeer.CarHireServlet.util.DBQueries.*;
 
 public class UserDaoImpl implements UserDao {
 
@@ -22,7 +24,27 @@ public class UserDaoImpl implements UserDao {
     public UserDaoImpl(Connection connection) {
         this.connection = connection;
     }
-    
+
+    @Override
+    public boolean addUser(User entity) {
+        try (PreparedStatement ps = connection.prepareStatement(ADD_USER)) {
+            ps.setBoolean(1, true);
+            ps.setString(2, entity.getEmail());
+            ps.setString(3, entity.getLastName());
+            ps.setString(4, entity.getName());
+            ps.setString(5, BCrypt.hashpw(entity.getPassword(), BCrypt.gensalt(12)));
+            ps.setString(6, entity.getUserName());
+            ps.setString(7, String.valueOf(Role.USER));
+            ps.execute();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+//            logger.severe(ex.getMessage());
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public Optional<User> findUserById(long id) {
         Optional<User> user = Optional.ofNullable(null);

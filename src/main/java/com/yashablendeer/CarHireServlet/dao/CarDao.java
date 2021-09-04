@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CarDao {
+    boolean addCar(Car car);
     Optional<Car> findById(long id);
     List<Car> findAllByCarMark(String carMark);
     List<Car> findAllByCarQuality(String carQuality);
 
-    //TODO upd car??
-    void deleteById(long id);
+    boolean deleteById(long id);
     List<Car> findAll();
 
 }

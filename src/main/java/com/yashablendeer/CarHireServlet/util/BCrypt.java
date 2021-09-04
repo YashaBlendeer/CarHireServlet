@@ -1,4 +1,4 @@
-package com.yashablendeer.CarHireServlet.Util;
+package com.yashablendeer.CarHireServlet.util;
 import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;
 
