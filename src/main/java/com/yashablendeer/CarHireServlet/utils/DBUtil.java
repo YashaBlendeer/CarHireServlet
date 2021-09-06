@@ -1,4 +1,4 @@
-package com.yashablendeer.CarHireServlet.util;
+package com.yashablendeer.CarHireServlet.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +16,7 @@ public class DBUtil {
             {
                 String url = "jdbc:mysql://localhost:3306/loginservlet?useUnicode=true&serverTimezone=UTC&useSSL=true" +
                         "&verifyServerCertificate=false";
-                String driver = "com.mysql.jdbc.Driver";
+                String driver = "com.mysql.cj.jdbc.Driver";
                 String username= "root";
                 String password= "parol";
                 Class.forName(driver);

@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="container">
-    <form action="login" method="POST" class="form-signin">
+    <form action="/serv" method="POST" class="form-signin">
         <h3 class="form-signin-heading">Welcome</h3>
         <br/>
 
@@ -22,6 +22,6 @@
         <input class="submit" type="submit" value="Login" class="btn btn-lg btn-primary btn-block"/>
     </form>
 </div>
-<%--<a href="TestServlet">Test Servlet</a>--%>
+
 </body>
 </html>

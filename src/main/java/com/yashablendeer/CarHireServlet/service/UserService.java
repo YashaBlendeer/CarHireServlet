@@ -25,4 +25,8 @@ public class UserService {
     public boolean createUser(User user) {
         return dao.addUser(user);
     }
+
+    public boolean checkPasswordMatching(String password, User user) {
+        return dao.checkPasswordMatching(password, user);
+    }
 }

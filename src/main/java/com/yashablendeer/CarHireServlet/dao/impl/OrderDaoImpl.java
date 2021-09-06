@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.yashablendeer.CarHireServlet.util.DBQueries.*;
+import static com.yashablendeer.CarHireServlet.utils.DBQueries.*;
 
 public class OrderDaoImpl implements OrderDao {
 

@@ -1,4 +1,4 @@
-package com.yashablendeer.CarHireServlet.util;
+package com.yashablendeer.CarHireServlet.utils;
 
 public class DBQueries {
 //    public static final String FIND_USER_BY_ID = "SELECT * FROM users WHERE id = ?";

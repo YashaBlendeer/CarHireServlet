@@ -11,5 +11,5 @@ public interface UserDao {
     List<User> findAll();
     Optional<User> findByUserName(String userName);
 //    User findByEmail(String email);
-
+    boolean checkPasswordMatching(String passToCheck, User user);
 }

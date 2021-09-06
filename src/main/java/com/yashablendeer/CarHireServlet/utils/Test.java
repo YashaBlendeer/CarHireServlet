@@ -1,4 +1,4 @@
-package com.yashablendeer.CarHireServlet.util;
+package com.yashablendeer.CarHireServlet.utils;
 
 import com.yashablendeer.CarHireServlet.dao.impl.CarDaoImpl;
 import com.yashablendeer.CarHireServlet.dao.impl.OrderDaoImpl;
@@ -7,6 +7,7 @@ import com.yashablendeer.CarHireServlet.dao.impl.UserDaoImpl;
 import com.yashablendeer.CarHireServlet.model.Car;
 import com.yashablendeer.CarHireServlet.model.Order;
 import com.yashablendeer.CarHireServlet.model.User;
+import com.yashablendeer.CarHireServlet.utils.DBUtil;
 
 import java.sql.Connection;
 import java.time.LocalDateTime;
