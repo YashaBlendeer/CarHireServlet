@@ -4,10 +4,8 @@ import com.yashablendeer.CarHireServlet.controller.command.Command;
 import com.yashablendeer.CarHireServlet.model.Car;
 import com.yashablendeer.CarHireServlet.service.CarService;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-import static javax.swing.JOptionPane.showMessageDialog;
 
 public class CarAdd implements Command {
 
@@ -20,8 +18,7 @@ public class CarAdd implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         if (request.getMethod().equals("GET")) {
-//            request.getSession().removeAttribute("successMessage");
-//            request.removeAttribute("successMessage");
+
             return "WEB-INF/carAdd.jsp";
         }
 
@@ -33,7 +30,6 @@ public class CarAdd implements Command {
 
         try {
             carService.addCar(car);
-//            request.getSession().setAttribute("successMessage", "Car was added successfully");
 
         } catch (Exception e) {
             e.printStackTrace();

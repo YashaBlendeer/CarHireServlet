@@ -25,7 +25,6 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public boolean addOrder(Order order, long carId, long userId) {
         try (PreparedStatement ps = connection.prepareStatement(ADD_ORDER)) {
-            System.out.println("inside add order(order, other)");
 
             ps.setString(1, "");
             ps.setTimestamp(2, Timestamp.valueOf(order.getStartTime()));
@@ -41,7 +40,6 @@ public class OrderDaoImpl implements OrderDao {
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
-//            logger.severe(ex.getMessage());
         }
         return true;
     }
@@ -74,7 +72,6 @@ public class OrderDaoImpl implements OrderDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-//            logger.severe(ex.getMessage());
         }
         return optOrder;
     }
@@ -106,7 +103,6 @@ public class OrderDaoImpl implements OrderDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-//            logger.severe(ex.getMessage());
         }
         return orders;
     }
@@ -139,7 +135,6 @@ public class OrderDaoImpl implements OrderDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-//            logger.severe(ex.getMessage());
         }
         return orders;
     }
@@ -152,7 +147,6 @@ public class OrderDaoImpl implements OrderDao {
         }catch(SQLException ex){
             ex.printStackTrace();
             return true;
-//            logger.severe(ex.getMessage());
         }
         return false;
     }

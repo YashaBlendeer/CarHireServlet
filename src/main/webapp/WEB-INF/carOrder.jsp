@@ -95,7 +95,6 @@
                 </div>
             </form>
 
-<%--            <h2><span class="text-success" th:utext="${successMessage}"></span></h2>--%>
         </div>
     </div>
 </div>

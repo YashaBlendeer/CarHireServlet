@@ -13,14 +13,5 @@
 
 <p>${requestScope.welcome}</p>
 
-<%--<form action="/logout" method="POST">--%>
-<%--    <button type="submit" class="btn btn-md btn-primary btn-block">Logout</button>--%>
-<%--</form>--%>
-
-<%--<c:if test="${sessionScope.userRole == 'ADMIN'}">--%>
-<%--        <a type="submit" class="btn btn-md btn-primary btn-block"--%>
-<%--           href="${pageContext.request.contextPath}/carAdd">Add car</a>--%>
-<%--</c:if>--%>
-
 </body>
 </html>

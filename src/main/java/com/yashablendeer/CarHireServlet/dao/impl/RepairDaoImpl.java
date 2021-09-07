@@ -44,7 +44,6 @@ public class RepairDaoImpl implements RepairDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-//            logger.severe(ex.getMessage());
         }
         return optRepair;
     }
@@ -69,7 +68,6 @@ public class RepairDaoImpl implements RepairDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-//            logger.severe(ex.getMessage());
         }
         return repairs;
     }
@@ -95,7 +93,6 @@ public class RepairDaoImpl implements RepairDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-//            logger.severe(ex.getMessage());
         }
         return optRepair;
     }

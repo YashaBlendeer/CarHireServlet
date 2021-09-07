@@ -6,10 +6,8 @@ import com.yashablendeer.CarHireServlet.model.Status;
 import com.yashablendeer.CarHireServlet.service.CarService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.awt.*;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 public class CarUpdate implements Command {
     private final CarService carService;
@@ -21,8 +19,6 @@ public class CarUpdate implements Command {
     public String execute(HttpServletRequest request) {
         if (request.getMethod().equals("GET")) {
             Long carId = Long.parseLong(request.getParameter("carId"));
-
-            System.out.println("carId: " + carId);
 
             try {
                 request.setAttribute("carId", carId);

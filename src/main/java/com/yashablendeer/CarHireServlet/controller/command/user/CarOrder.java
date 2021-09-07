@@ -30,8 +30,6 @@ public class CarOrder implements Command {
         if (request.getMethod().equals("GET")) {
             Long carId = Long.parseLong(request.getParameter("carId"));
 
-            System.out.println("carId: " + carId);
-
             try {
                 request.setAttribute("carId", carId);
                 request.setAttribute("carToOrder",
@@ -55,10 +53,8 @@ public class CarOrder implements Command {
                     LocalDateTime.parse(request.getParameter("startTime")),
                     LocalDateTime.parse(request.getParameter("endTime")));
 
-            System.out.println("dateNotAvailable: " + dateNotAvailable);
             if (!dateNotAvailable) {
                 request.getSession().removeAttribute("dateNotAvailableMessage");
-                System.out.println("inside if in carOrder");
                 order.setUser(user);
                 order.setCar(receivedCar);
                 order.setWithDriver(Boolean.valueOf(request.getParameter("withDriver")) == null ? false : true);

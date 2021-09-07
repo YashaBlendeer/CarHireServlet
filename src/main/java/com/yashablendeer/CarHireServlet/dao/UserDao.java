@@ -10,7 +10,6 @@ public interface UserDao {
     Optional<User> findUserById(long id);
     List<User> findAll();
     Optional<User> findByUserName(String userName);
-//    User findByEmail(String email);
     boolean checkPasswordMatching(String passToCheck, User user);
     boolean banHandler(long id);
     boolean managerHandler(long id);

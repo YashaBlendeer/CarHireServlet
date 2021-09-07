@@ -1,6 +1,5 @@
 package com.yashablendeer.CarHireServlet.dao.impl.extractUtil;
 
-import com.yashablendeer.CarHireServlet.model.Order;
 import com.yashablendeer.CarHireServlet.model.Repair;
 import com.yashablendeer.CarHireServlet.model.Status;
 

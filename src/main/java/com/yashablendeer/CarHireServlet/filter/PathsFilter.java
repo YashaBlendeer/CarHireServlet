@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+
 import java.util.regex.Pattern;
 
 public class PathsFilter implements Filter {
@@ -37,35 +35,26 @@ public class PathsFilter implements Filter {
         HttpSession session = request.getSession();
         String path = request.getRequestURI();
         User user = (User) session.getAttribute("user");
-        System.out.println("user: " + user);
-        System.out.println("path: " + path);
 
-        System.out.println("isLogged:" + isLogged(user));
 
         if(!isLogged(user) && publicPattern.matcher(path).matches()){
             filterChain.doFilter(servletRequest, servletResponse);
-            System.out.println("inside first if");
             return;
         }
 
         if(isLogged(user) && isAccessible(user, path) ){
-            System.out.println("inside 2 if");
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         } else if(isLogged(user) && !isAccessible(user, path)) {
-            System.out.println("inside 3 if");
             response.sendRedirect("/home");
             return;
         }
 
         if(!isLogged(user) && !publicPattern.matcher(path).matches()){
-            System.out.println("inside 4 if");
             response.sendRedirect("/login");
             return;
         } else {
             response.sendRedirect("/error");
-
-//            request.getRequestDispatcher("WEB-INF/error.jsp").forward(servletRequest, servletResponse);
         }
     }
 
@@ -93,9 +82,5 @@ public class PathsFilter implements Filter {
 
     private boolean isLogged(User user) {
         return user != null;
-    }
-
-    private boolean isActive(User user) {
-        return user.getActive();
     }
 }

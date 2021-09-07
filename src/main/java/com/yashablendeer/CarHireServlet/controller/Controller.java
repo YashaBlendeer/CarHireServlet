@@ -85,10 +85,8 @@ public class Controller extends HttpServlet {
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String path = request.getRequestURI();
-//        Command command = commands.getOrDefault(path, (req)->"/notExist.jsp");
         Command command = commands.get(path);
         String page = command.execute(request);
-        System.out.println("page: " + page);
         if(page.contains("redirect:")){
 
             response.sendRedirect(page.replace("redirect:", ""));

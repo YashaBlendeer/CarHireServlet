@@ -35,7 +35,6 @@ public class CarDaoImpl implements CarDao {
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
-//            logger.severe(ex.getMessage());
         }
         return true;
     }
@@ -53,7 +52,6 @@ public class CarDaoImpl implements CarDao {
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
-//            logger.severe(ex.getMessage());
         }
         return true;
     }
@@ -69,7 +67,6 @@ public class CarDaoImpl implements CarDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-//            logger.severe(ex.getMessage());
         }
         return car;
     }
@@ -85,7 +82,6 @@ public class CarDaoImpl implements CarDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-//            logger.severe(ex.getMessage());
         }
         return cars;
     }
@@ -101,7 +97,6 @@ public class CarDaoImpl implements CarDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-//            logger.severe(ex.getMessage());
         }
         return cars;
     }
@@ -116,7 +111,6 @@ public class CarDaoImpl implements CarDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-//            logger.severe(ex.getMessage());
         }
         return cars;
     }
@@ -129,7 +123,6 @@ public class CarDaoImpl implements CarDao {
         }catch(SQLException ex){
             ex.printStackTrace();
             return false;
-//            logger.severe(ex.getMessage());
         }
         return true;
     }

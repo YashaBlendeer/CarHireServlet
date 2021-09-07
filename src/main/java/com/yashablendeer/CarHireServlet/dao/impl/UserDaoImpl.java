@@ -21,7 +21,6 @@ import static com.yashablendeer.CarHireServlet.utils.DBQueries.*;
 public class UserDaoImpl implements UserDao {
 
     private Connection connection;
-//    private UserExtract userExtract = new UserExtract();
 
     public UserDaoImpl(Connection connection) {
         this.connection = connection;
@@ -41,7 +40,6 @@ public class UserDaoImpl implements UserDao {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-//            logger.severe(ex.getMessage());
             return false;
         }
         return true;
@@ -58,7 +56,6 @@ public class UserDaoImpl implements UserDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-//            logger.severe(ex.getMessage());
         }
         return user;
     }
@@ -73,7 +70,6 @@ public class UserDaoImpl implements UserDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-//            logger.severe(ex.getMessage());
         }
         return users;
     }
@@ -89,7 +85,6 @@ public class UserDaoImpl implements UserDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-//            logger.severe(ex.getMessage());
         }
         return user;
     }
@@ -105,10 +100,8 @@ public class UserDaoImpl implements UserDao {
             User user = findUserById(id).orElseThrow(NoSuchElementException::new);
             if (user.getActive()) {
                 ps.setBoolean(1, false);
-//            log.info("User active status was changed to banned");
             } else {
                 ps.setBoolean(1, true);
-//            log.info("User active status was changed to active");
             }
             ps.setLong(2, id);
             ps.execute();
@@ -116,7 +109,6 @@ public class UserDaoImpl implements UserDao {
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
-//            logger.severe(ex.getMessage());
         }
         return true;
     }
@@ -127,10 +119,8 @@ public class UserDaoImpl implements UserDao {
             User user = findUserById(id).orElseThrow(NoSuchElementException::new);
             if (user.getRole().equals(Role.USER)) {
                 ps.setString(1, Role.MANAGER.name());
-//            log.info("User active status was changed to banned");
             } else {
                 ps.setString(1, Role.USER.name());
-//            log.info("User active status was changed to active");
             }
             ps.setLong(2, id);
             ps.execute();
@@ -138,7 +128,6 @@ public class UserDaoImpl implements UserDao {
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
-//            logger.severe(ex.getMessage());
         }
         return true;
     }
