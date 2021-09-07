@@ -14,7 +14,9 @@
 <div>
   <table id="example" class="table table-hover" style="text-align: center; align-content: center">
     <thead>
+        <c:if test="${sessionScope.userRole == 'ADMIN' or sessionScope.userRole == 'MANAGER'}">
         <th>#</th>
+        </c:if>
         <th>Name</th>
         <th>Mark</th>
         <th>Quality</th>
@@ -32,7 +34,9 @@
     <tbody>
     <c:forEach var="car" items="${requestScope.cars}">
       <tr>
-        <td>${car.id}</td>
+          <c:if test="${sessionScope.userRole == 'ADMIN' or sessionScope.userRole == 'MANAGER'}">
+          <td>${car.id}</td>
+          </c:if>
         <td>${car.carName}</td>
         <td>${car.carMark}</td>
         <td>${car.carQuality}</td>

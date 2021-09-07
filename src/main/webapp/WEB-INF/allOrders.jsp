@@ -12,7 +12,7 @@
 <body>
 <jsp:include page="navbar.jsp"/>
 
-<table class="table table-hover">
+<table style="text-align: center; align-content: center" class="table table-hover">
   <thead>
 <c:if test="${sessionScope.userRole == 'MANAGER'}">
     <th>#</th>
@@ -45,7 +45,9 @@
   <tbody>
     <c:forEach var="order" items="${requestScope.orders}">
       <tr>
+        <c:if test="${sessionScope.userRole == 'MANAGER'}">
         <td>${order.car.id}</td>
+        </c:if>
         <td>${order.car.carName}</td>
         <td>${order.car.status}</td>
         <td>${order.orderPrice}</td>
