@@ -63,7 +63,10 @@ public class Controller extends HttpServlet {
                 new ManagerRoleHandler(userService));
 
         commands.put("/carOrder",
-                new CarOrder(userService, carService, orderService));
+                new CarOrder(carService, orderService));
+        commands.put("/allOrders",
+                new AllOrders(carService, orderService));
+
     }
 
     @Override

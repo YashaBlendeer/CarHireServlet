@@ -17,12 +17,9 @@ import java.util.NoSuchElementException;
 
 public class CarOrder implements Command {
 
-    private final UserService userService;
     private final CarService carService;
     private final OrderService orderService;
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    public CarOrder(UserService userService, CarService carService, OrderService orderService) {
-        this.userService = userService;
+    public CarOrder(CarService carService, OrderService orderService) {
         this.carService = carService;
         this.orderService = orderService;
     }
