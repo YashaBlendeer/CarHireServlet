@@ -6,10 +6,11 @@
     <meta charset="ISO-8859-1" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 
 <body>
-<jsp:include page="navbar.jsp" />
+<jsp:include page="navbar.jsp"/>
 
 <div>
   <form autocomplete="off" action="/carAdd" method="post" class="form-horizontal" role="form">
@@ -54,12 +55,15 @@
           </div>
         </div>
 
-<%--        <h2><span class="text-success" th:utext="${successMessage}"></span></h2>--%>
+          <c:if test="${sessionScope.successMessage != null}">
+              <h2 ><span class="text-success" onchange="successAlert()">${sessionScope.successMessage}</span></h2>
+          </c:if>
       </div>
     </div>
   </form>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<%--<script src="../static/js/util.js"></script>--%>
 </body>
 </html>

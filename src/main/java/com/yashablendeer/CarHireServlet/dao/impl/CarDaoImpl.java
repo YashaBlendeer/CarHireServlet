@@ -41,6 +41,24 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
+    public boolean updateCar(Car car, long id) {
+        try (PreparedStatement ps = connection.prepareStatement(UPDATE_CAR_BY_ID)) {
+            ps.setString(1, car.getCarMark());
+            ps.setString(2, car.getCarName());
+            ps.setLong(3, car.getCarPrice());
+            ps.setString(4, car.getCarQuality());
+            ps.setString(5, car.getStatus().name());
+            ps.setLong(6, id);
+            ps.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+//            logger.severe(ex.getMessage());
+        }
+        return true;
+    }
+
+    @Override
     public Optional<Car> findById(long id) {
         Optional<Car> car = Optional.ofNullable(null);
         try (PreparedStatement ps = connection.prepareStatement(FIND_CAR_BY_ID)) {

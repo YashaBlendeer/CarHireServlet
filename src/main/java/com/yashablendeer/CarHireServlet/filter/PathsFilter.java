@@ -20,7 +20,8 @@ public class PathsFilter implements Filter {
     private Pattern publicPattern = Pattern.compile("(/)|(/error)|(/login\\b.*)|(/registration\\b.*)|(/navbar\\b.*)");
     private Pattern userPattern = Pattern.compile("(/home\\b.*)|(/carOrder\\b.*)|(/carPage\\b.*)|(/allOrders\\b.*)|" +
             "(/navbar\\b.*)|(/error)|(/logout\\b.*)");
-    private Pattern adminPattern = Pattern.compile("(/home\\b.*)|(/carPage\\b.*)|(/carAdd\\b.*)|(/carUpdate\\b.*)|" +
+    private Pattern adminPattern = Pattern.compile("(/home\\b.*)|(/carPage\\b.*)|(/carAdd\\b.*)|" +
+            "(/carUpdate\\b.*)|(/carDelete\\b.*)|(/banHandler\\b.*)|(/managerHandler\\b.*)|" +
             "(/allUsers\\b.*)|(/navbar\\b.*)|(/error)|(/logout\\b.*)");
     private Pattern managerPattern = Pattern.compile("(/home\\b.*)|(/carPage\\b.*)|(/allOrders\\b.*)|(/navbar\\b" +
             ".*)|(/orderReject\\b.*)|(/orderRepair\\b.*)|(/error)|(/logout\\b.*)");

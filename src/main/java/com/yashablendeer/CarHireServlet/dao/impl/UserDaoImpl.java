@@ -1,5 +1,6 @@
 package com.yashablendeer.CarHireServlet.dao.impl;
 
+import com.yashablendeer.CarHireServlet.model.Status;
 import com.yashablendeer.CarHireServlet.utils.BCrypt;
 import com.yashablendeer.CarHireServlet.dao.UserDao;
 import com.yashablendeer.CarHireServlet.dao.impl.extractUtil.UserExtract;
@@ -12,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static com.yashablendeer.CarHireServlet.utils.DBQueries.*;
@@ -94,5 +96,28 @@ public class UserDaoImpl implements UserDao {
 
     public boolean checkPasswordMatching(String passwordToCheck, User user) {
         return BCrypt.checkpw(passwordToCheck, user.getPassword());
+    }
+
+    @Override
+    public boolean banHandler(long id) {
+
+        try (PreparedStatement ps = connection.prepareStatement(SET_MANAGER_OR_USER_ROLE)) {
+            User user = findUserById(id).orElseThrow(NoSuchElementException::new);
+            if (user.getActive()) {
+                ps.setBoolean(1, false);
+//            log.info("User active status was changed to banned");
+            } else {
+                ps.setBoolean(1, true);
+//            log.info("User active status was changed to active");
+            }
+            ps.setLong(2, id);
+            ps.execute();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+//            logger.severe(ex.getMessage());
+        }
+        return true;
     }
 }

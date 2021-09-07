@@ -29,4 +29,8 @@ public class UserService {
     public boolean checkPasswordMatching(String password, User user) {
         return dao.checkPasswordMatching(password, user);
     }
+
+    public boolean banHandler(long id) {
+        return dao.banHandler(id);
+    }
 }

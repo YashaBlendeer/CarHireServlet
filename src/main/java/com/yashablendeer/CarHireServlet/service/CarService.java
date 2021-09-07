@@ -33,4 +33,8 @@ public class CarService {
     public boolean addCar(Car car) {
         return dao.addCar(car);
     }
+    public boolean updateCar(Car car, long id) {
+        return dao.updateCar(car, id);
+    }
+
 }

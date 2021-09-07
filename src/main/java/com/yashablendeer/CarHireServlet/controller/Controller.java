@@ -1,7 +1,7 @@
 package com.yashablendeer.CarHireServlet.controller;
 
 import com.yashablendeer.CarHireServlet.controller.command.*;
-import com.yashablendeer.CarHireServlet.controller.command.admin.CarAdd;
+import com.yashablendeer.CarHireServlet.controller.command.admin.*;
 import com.yashablendeer.CarHireServlet.service.CarService;
 import com.yashablendeer.CarHireServlet.service.UserService;
 
@@ -30,7 +30,7 @@ public class Controller extends HttpServlet {
         servletConfig.getServletContext()
                 .setAttribute("loggedUsers", new HashSet<String>());
 
-        commands.put("/", (req) -> "/index.jsp");
+        commands.put("/", (req) -> "/login.jsp");
 
         commands.put("/registration",
                 new Registration(userService));
@@ -42,10 +42,22 @@ public class Controller extends HttpServlet {
                 new Home(userService));
         commands.put("/error",
                 new ErrorPage());
-        commands.put("/carAdd",
-                new CarAdd(carService));
+
         commands.put("/carPage",
                 new CarPage(carService));
+        commands.put("/carAdd",
+                new CarAdd(carService));
+        commands.put("/carUpdate",
+                new CarUpdate(carService));
+        commands.put("/carDelete",
+                new CarDelete(carService));
+
+        commands.put("/allUsers",
+                new AllUsers(userService));
+        commands.put("/banHandler",
+                new BanHandler(userService));
+        commands.put("/managerHandler",
+                new ManagerRoleHandler(userService));
     }
 
     @Override
