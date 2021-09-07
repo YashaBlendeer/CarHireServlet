@@ -23,32 +23,10 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public boolean addOrder(Order order) {
-        try (PreparedStatement ps = connection.prepareStatement(ADD_ORDER)) {
-            ps.setString(1, "");
-            ps.setTimestamp(2, Timestamp.valueOf(order.getStartTime()));
-            ps.setTimestamp(3, Timestamp.valueOf(order.getEndTime()));
-            ps.setLong(4, order.getOrderPrice());
-            ps.setString(5, order.getPassport());
-            ps.setString(6, String.valueOf(Status.UNPAYED));
-            ps.setString(7, String.valueOf(Status.READY));
-            ps.setBoolean(8, order.getWithDriver());
-            ps.setLong(9, 1);
-            ps.setLong(10, 2);
-//            ps.setLong(9, order.getCar().getId());
-//            ps.setLong(10, order.getUser().getId());
-            ps.execute();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            return false;
-//            logger.severe(ex.getMessage());
-        }
-        return true;
-    }
-
-    @Override
     public boolean addOrder(Order order, long carId, long userId) {
         try (PreparedStatement ps = connection.prepareStatement(ADD_ORDER)) {
+            System.out.println("inside add order(order, other)");
+
             ps.setString(1, "");
             ps.setTimestamp(2, Timestamp.valueOf(order.getStartTime()));
             ps.setTimestamp(3, Timestamp.valueOf(order.getEndTime()));

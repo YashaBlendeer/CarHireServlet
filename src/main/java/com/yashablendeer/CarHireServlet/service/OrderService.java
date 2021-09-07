@@ -10,10 +10,6 @@ import java.util.Optional;
 public class OrderService {
     private OrderDao dao = DaoFactory.getOrderDao();
 
-    public boolean addOrder(Order order) {
-        return dao.addOrder(order);
-    }
-
     public boolean addOrder(Order order, long carId, long userId) {
         return dao.addOrder(order, carId, userId);
     }

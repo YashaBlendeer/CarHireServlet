@@ -1,3 +1,1 @@
-function successAlert(){
-    alert("Car added successfully");
-}
+console.log("hello")

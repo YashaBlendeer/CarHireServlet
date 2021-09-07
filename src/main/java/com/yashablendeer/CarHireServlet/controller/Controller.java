@@ -2,7 +2,9 @@ package com.yashablendeer.CarHireServlet.controller;
 
 import com.yashablendeer.CarHireServlet.controller.command.*;
 import com.yashablendeer.CarHireServlet.controller.command.admin.*;
+import com.yashablendeer.CarHireServlet.controller.command.user.CarOrder;
 import com.yashablendeer.CarHireServlet.service.CarService;
+import com.yashablendeer.CarHireServlet.service.OrderService;
 import com.yashablendeer.CarHireServlet.service.UserService;
 
 import javax.servlet.ServletConfig;
@@ -21,6 +23,7 @@ public class Controller extends HttpServlet {
     private Map<String, Command> commands = new HashMap<>();
     private UserService userService = new UserService();
     private CarService carService = new CarService();
+    private OrderService orderService = new OrderService();
     public Controller() {
     }
 
@@ -58,6 +61,9 @@ public class Controller extends HttpServlet {
                 new BanHandler(userService));
         commands.put("/managerHandler",
                 new ManagerRoleHandler(userService));
+
+        commands.put("/carOrder",
+                new CarOrder(userService, carService, orderService));
     }
 
     @Override
