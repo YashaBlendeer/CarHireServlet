@@ -101,13 +101,35 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean banHandler(long id) {
 
-        try (PreparedStatement ps = connection.prepareStatement(SET_MANAGER_OR_USER_ROLE)) {
+        try (PreparedStatement ps = connection.prepareStatement(SET_BAN_OR_UNBAN)) {
             User user = findUserById(id).orElseThrow(NoSuchElementException::new);
             if (user.getActive()) {
                 ps.setBoolean(1, false);
 //            log.info("User active status was changed to banned");
             } else {
                 ps.setBoolean(1, true);
+//            log.info("User active status was changed to active");
+            }
+            ps.setLong(2, id);
+            ps.execute();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+//            logger.severe(ex.getMessage());
+        }
+        return true;
+    }
+
+    @Override
+    public boolean managerHandler(long id) {
+        try (PreparedStatement ps = connection.prepareStatement(SET_MANAGER_OR_USER_ROLE)) {
+            User user = findUserById(id).orElseThrow(NoSuchElementException::new);
+            if (user.getRole().equals(Role.USER)) {
+                ps.setString(1, Role.MANAGER.name());
+//            log.info("User active status was changed to banned");
+            } else {
+                ps.setString(1, Role.USER.name());
 //            log.info("User active status was changed to active");
             }
             ps.setLong(2, id);

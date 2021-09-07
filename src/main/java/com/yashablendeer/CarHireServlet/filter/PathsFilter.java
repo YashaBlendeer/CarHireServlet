@@ -48,11 +48,11 @@ public class PathsFilter implements Filter {
             return;
         }
 
-        if(isLogged(user) && isActive(user) && isAccessible(user, path) ){
+        if(isLogged(user) && isAccessible(user, path) ){
             System.out.println("inside 2 if");
             filterChain.doFilter(servletRequest, servletResponse);
             return;
-        } else if(isLogged(user) && isActive(user) && !isAccessible(user, path)) {
+        } else if(isLogged(user) && !isAccessible(user, path)) {
             System.out.println("inside 3 if");
             response.sendRedirect("/home");
             return;
@@ -62,11 +62,6 @@ public class PathsFilter implements Filter {
             System.out.println("inside 4 if");
             response.sendRedirect("/login");
             return;
-        }
-
-        if(!isActive(user)){
-            request.setAttribute("userBanned", "You are banned");
-            request.getRequestDispatcher("WEB-INF/login.jsp").forward(servletRequest, servletResponse);
         } else {
             response.sendRedirect("/error");
 

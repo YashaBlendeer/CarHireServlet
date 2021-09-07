@@ -38,12 +38,12 @@
             <p>${requestScope.userBanned}</p>
         </c:if>
         <button style="width: 200px; margin-top: 10px" class="btn btn-md btn-primary btn-block"
-                name="Submit" value="Login" type="Submit">Sign in</button>
+                name="Submit" value="Login" type="Submit">Login</button>
     </form>
-<%--    <form th:action="@{/registration}" method="get">--%>
-<%--        <button style="margin-top: 10px; width: 200px" class="btn btn-md btn-warning btn-block"--%>
-<%--                type="Submit" th:text="#{registration.text.register}"></button>--%>
-<%--    </form>--%>
+    <form action="/registration" method="get">
+        <button style="margin-top: 10px; width: 200px" class="btn btn-md btn-warning btn-block"
+                type="Submit">Sign up</button>
+    </form>
 
 </div>
 </body>

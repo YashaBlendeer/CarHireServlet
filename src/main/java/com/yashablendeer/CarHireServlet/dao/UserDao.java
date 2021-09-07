@@ -13,4 +13,5 @@ public interface UserDao {
 //    User findByEmail(String email);
     boolean checkPasswordMatching(String passToCheck, User user);
     boolean banHandler(long id);
+    boolean managerHandler(long id);
 }

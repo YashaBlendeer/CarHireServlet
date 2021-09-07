@@ -20,7 +20,7 @@
         <div class="form-group">
           <div class="col-sm-9">
             <input type="text" placeholder="Name" name="carName"
-                   class="form-control"/>
+                   class="form-control" minlength="1" maxlength="30"/>
 <%--            <label class="validation-message"></label>--%>
           </div>
         </div>
@@ -28,7 +28,7 @@
         <div class="form-group">
           <div class="col-sm-9">
             <input type="text" placeholder="Mark" name="carMark"
-                   class="form-control"/>
+                   class="form-control" minlength="1" maxlength="30"/>
             <%--            <label class="validation-message"></label>--%>
           </div>
         </div>
@@ -36,15 +36,15 @@
         <div class="form-group">
           <div class="col-sm-9">
             <input type="text" placeholder="Quality" name="carQuality"
-                   class="form-control"/>
+                   class="form-control" minlength="1" maxlength="1"/>
             <%--            <label class="validation-message"></label>--%>
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-sm-9">
-            <input type="text" placeholder="Price per hour" name="carPrice"
-                   class="form-control"/>
+            <input type="number" placeholder="Price per hour" name="carPrice"
+                   class="form-control" minlength="1"/>
             <%--            <label class="validation-message"></label>--%>
           </div>
         </div>

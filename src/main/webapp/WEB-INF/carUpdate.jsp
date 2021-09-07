@@ -21,7 +21,8 @@
         <div class="form-group">
           <div class="col-sm-9">
             <input type="text" placeholder="Name" name="carName"
-                   class="form-control" value="${requestScope.carToUpdate.carName}"/>
+                   class="form-control" value="${requestScope.carToUpdate.carName}"
+                   minlength="1" maxlength="30"/>
             <%--            <label class="validation-message"></label>--%>
           </div>
         </div>
@@ -29,7 +30,8 @@
         <div class="form-group">
           <div class="col-sm-9">
             <input type="text" placeholder="Mark" name="carMark"
-                   class="form-control" value="${requestScope.carToUpdate.carMark}"/>
+                   class="form-control" value="${requestScope.carToUpdate.carMark}"
+                   minlength="1" maxlength="30"/>
             <%--            <label class="validation-message"></label>--%>
           </div>
         </div>
@@ -37,15 +39,17 @@
         <div class="form-group">
           <div class="col-sm-9">
             <input type="text" placeholder="Quality" name="carQuality"
-                   class="form-control" value="${requestScope.carToUpdate.carQuality}"/>
+                   class="form-control" value="${requestScope.carToUpdate.carQuality}"
+                   minlength="1" maxlength="1"/>
             <%--            <label class="validation-message"></label>--%>
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-sm-9">
-            <input type="text" placeholder="Price per hour" name="carPrice"
-                   class="form-control" value="${requestScope.carToUpdate.carPrice}"/>
+            <input type="number" placeholder="Price per hour" name="carPrice"
+                   class="form-control" value="${requestScope.carToUpdate.carPrice}"
+                   minlength="1"/>
             <%--            <label class="validation-message"></label>--%>
           </div>
         </div>

@@ -33,4 +33,8 @@ public class UserService {
     public boolean banHandler(long id) {
         return dao.banHandler(id);
     }
+
+    public boolean managerRoleHandler(long id) {
+        return dao.managerHandler(id);
+    }
 }

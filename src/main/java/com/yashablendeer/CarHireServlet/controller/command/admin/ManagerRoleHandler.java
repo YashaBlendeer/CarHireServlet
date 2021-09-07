@@ -14,6 +14,13 @@ public class ManagerRoleHandler implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        return null;
+        Long userId = Long.parseLong(request.getParameter("userId"));
+        try {
+            userService.managerRoleHandler(userId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/error";
+        }
+        return "redirect:/allUsers";
     }
 }

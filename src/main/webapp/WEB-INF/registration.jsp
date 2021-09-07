@@ -19,7 +19,7 @@
             <div class="col-sm-9">
                 <label class="validation-message">Name</label>
                 <input type="text" placeholder="Name" name="name"
-                       class="form-control"/>
+                       class="form-control" minlength="1" maxlength="50"/>
             </div>
         </div>
 
@@ -27,28 +27,28 @@
             <div class="col-sm-9">
                 <label class="validation-message">Last name</label>
                 <input type="text" placeholder="Last name" name="lastName"
-                       class="form-control"/>
+                       class="form-control" minlength="1" maxlength="50"/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-9">
                 <label class="validation-message">Email</label>
-                <input type="text" placeholder="email" name="email"
-                       class="form-control"/>
+                <input type="email" placeholder="email" name="email"
+                       class="form-control" minlength="1" maxlength="35"/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-9">
                 <label class="validation-message">Username</label>
                 <input type="text" placeholder="username" name="userName"
-                       class="form-control"/>
+                       class="form-control" minlength="1" maxlength="25"/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-9">
                 <label class="validation-message">Pass</label>
                 <input type="password" placeholder="password" name="password"
-                       class="form-control"/>
+                       class="form-control" minlength="1" maxlength="25"/>
             </div>
         </div>
 
@@ -60,7 +60,11 @@
         </div>
 
         <h2><span class="text-success" th:utext="${successMessage}"></span></h2>
+    </form>
 
+    <form action="/login" method="get">
+        <button style="margin-top: 10px; width: 200px" class="btn btn-md btn-warning btn-block"
+                type="Submit">Login</button>
     </form>
 </div>
 </body>

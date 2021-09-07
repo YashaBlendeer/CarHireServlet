@@ -26,23 +26,24 @@ public class Login implements Command {
 
         try {
             user = userService.findByUserName(request.getParameter("userName"));
+            if (user.get().getActive()) {
+                boolean correctPass = userService.checkPasswordMatching(request.getParameter("password"), user.get());
+                if (user.isPresent() && correctPass) {
+                    CommandSecurity.addUserSession(request, user.get());
+                    return "redirect:/home";
+                }
 
-            boolean correctPass = userService.checkPasswordMatching(request.getParameter("password"), user.get());
-            if (user.isPresent() && correctPass) {
-                System.out.println("user in login: " + user.get());
-                CommandSecurity.addUserSession(request, user.get());
-                return "redirect:/home";
-            }
-
-            if (user.isPresent() && !correctPass) {
-                request.setAttribute("wrongPassword", "Password is not correct");
-                System.out.println("Password is not correct");
+                if (user.isPresent() && !correctPass) {
+                    request.setAttribute("wrongPassword", "Password is not correct");
+                    return "WEB-INF/login.jsp";
+                }
+                request.setAttribute("userBanned", "You're banned");
                 return "WEB-INF/login.jsp";
             }
 
+
         }catch (NoSuchElementException ex) {
             request.setAttribute("wrongUserName", "Username not found");
-            System.out.println("Username not found");
             return "WEB-INF/login.jsp";
         } catch (Exception e) {
             e.printStackTrace();
