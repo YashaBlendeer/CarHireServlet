@@ -58,7 +58,9 @@ public class CarOrder implements Command {
                     LocalDateTime.parse(request.getParameter("startTime")),
                     LocalDateTime.parse(request.getParameter("endTime")));
 
+            System.out.println("dateNotAvailable: " + dateNotAvailable);
             if (!dateNotAvailable) {
+                request.getSession().removeAttribute("dateNotAvailableMessage");
                 System.out.println("inside if in carOrder");
                 order.setUser(user);
                 order.setCar(receivedCar);
@@ -68,11 +70,9 @@ public class CarOrder implements Command {
                 order.setStartTime(LocalDateTime.parse(request.getParameter("startTime")));
                 order.setEndTime( LocalDateTime.parse(request.getParameter("endTime")));
                 orderService.addOrder(order, carIdToOrder, user.getId());
-                System.out.println(order);
+            } else {
+                request.getSession().setAttribute("dateNotAvailableMessage", "This date is not available");
             }
-
-            System.out.println("with driver: " + request.getParameter("withDriver"));
-            System.out.println("price: " + Long.parseLong(request.getParameter("orderPrice")));
 
             request.setAttribute("carToOrder", receivedCar);
         } catch (Exception e) {

@@ -33,7 +33,7 @@ public class OrderDaoImpl implements OrderDao {
             ps.setLong(4, order.getOrderPrice());
             ps.setString(5, order.getPassport());
             ps.setString(6, String.valueOf(Status.UNPAYED));
-            ps.setString(7, String.valueOf(Status.READY));
+            ps.setString(7, String.valueOf(Status.WAITING));
             ps.setBoolean(8, order.getWithDriver());
             ps.setLong(9, carId);
             ps.setLong(10, userId);

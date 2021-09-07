@@ -56,7 +56,7 @@
         </div>
 
           <c:if test="${sessionScope.successMessage != null}">
-              <h2 ><span class="text-success" onchange="successAlert()">${sessionScope.successMessage}</span></h2>
+              <h2 ><span class="text-success">${sessionScope.successMessage}</span></h2>
           </c:if>
       </div>
     </div>
