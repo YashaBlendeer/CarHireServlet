@@ -48,8 +48,8 @@ public class PathsFilter implements Filter {
         }
 
         if(isLogged(user) && isActive(user) && isAccessible(user, path) ){
-            filterChain.doFilter(servletRequest, servletResponse);
             System.out.println("inside 2 if");
+            filterChain.doFilter(servletRequest, servletResponse);
             return;
         } else if(isLogged(user) && isActive(user) && !isAccessible(user, path)) {
             System.out.println("inside 3 if");

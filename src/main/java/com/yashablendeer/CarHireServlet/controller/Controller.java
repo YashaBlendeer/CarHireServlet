@@ -1,9 +1,10 @@
 package com.yashablendeer.CarHireServlet.controller;
 
 import com.yashablendeer.CarHireServlet.controller.command.*;
+import com.yashablendeer.CarHireServlet.controller.command.admin.CarAdd;
+import com.yashablendeer.CarHireServlet.service.CarService;
 import com.yashablendeer.CarHireServlet.service.UserService;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -20,6 +20,7 @@ import java.util.Map;
 public class Controller extends HttpServlet {
     private Map<String, Command> commands = new HashMap<>();
     private UserService userService = new UserService();
+    private CarService carService = new CarService();
     public Controller() {
     }
 
@@ -41,6 +42,10 @@ public class Controller extends HttpServlet {
                 new Home(userService));
         commands.put("/error",
                 new ErrorPage());
+        commands.put("/carAdd",
+                new CarAdd(carService));
+        commands.put("/carPage",
+                new CarPage(carService));
     }
 
     @Override

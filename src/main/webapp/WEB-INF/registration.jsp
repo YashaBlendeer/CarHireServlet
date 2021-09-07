@@ -1,12 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Divas
-  Date: 04.09.2021
-  Time: 22:45
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %><html>
 <head>
     <title>Registration</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -14,7 +8,8 @@
 
 </head>
 <body>
-Registration
+<jsp:include page="navbar.jsp" />
+
 <div class="container">
     <form autocomplete="off" action="#" action="/registration"
           method="post" class="form-signin"
@@ -52,7 +47,7 @@ Registration
         <div class="form-group">
             <div class="col-sm-9">
                 <label class="validation-message">Pass</label>
-                <input type="text" placeholder="password" name="password"
+                <input type="password" placeholder="password" name="password"
                        class="form-control"/>
             </div>
         </div>

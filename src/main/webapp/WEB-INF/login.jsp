@@ -9,6 +9,8 @@
 
 </head>
 <body>
+<jsp:include page="navbar.jsp" />
+
 <div class="container">
     <form style="margin-top: 20px;" action="/login" method="POST" class="form-signin">
 

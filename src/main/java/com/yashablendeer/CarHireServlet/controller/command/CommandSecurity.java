@@ -14,9 +14,13 @@ public class CommandSecurity {
 //        context.setAttribute("user", user.getLogin());
         HashSet<String> loggedUsers = (HashSet<String>) context.getAttribute("loggedUsers");
         loggedUsers.add(user.getUserName());
+
         System.out.println("logged users in addSession: " + loggedUsers);
+
         context.setAttribute("loggedUsers", loggedUsers);
         session.setAttribute("user", user);
+        session.setAttribute("userRole", user.getRole().name());
+
         System.out.println("user in addUserSession" + user);
     }
 
@@ -27,6 +31,7 @@ public class CommandSecurity {
 
         loggedUsers.remove(userName);
         session.removeAttribute("user");
+        session.removeAttribute("userRole");
 
         System.out.println("loggedUsers in destroy after destroy" + loggedUsers);
 
