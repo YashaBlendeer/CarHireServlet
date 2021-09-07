@@ -43,7 +43,11 @@
   </c:if>
   </thead>
   <tbody>
+
     <c:forEach var="order" items="${requestScope.orders}">
+      <c:if test="${order.user.id == sessionScope.user.id or sessionScope.userRole=='MANAGER'}">
+
+
       <tr>
         <c:if test="${sessionScope.userRole == 'MANAGER'}">
         <td>${order.car.id}</td>
@@ -75,9 +79,10 @@
           <th><a class="btn btn-primary">Register car return</a></th>
         </c:if>
       </tr>
+      </c:if>
     </c:forEach>
 
   </tbody>
-
+</table>
 </body>
 </html>

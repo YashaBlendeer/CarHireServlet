@@ -4,6 +4,7 @@ import com.yashablendeer.CarHireServlet.model.Car;
 import com.yashablendeer.CarHireServlet.model.Order;
 import com.yashablendeer.CarHireServlet.model.Status;
 import com.yashablendeer.CarHireServlet.service.OrderService;
+import com.yashablendeer.CarHireServlet.service.UserService;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,13 +14,13 @@ import java.util.stream.IntStream;
 
 public class Validations {
     private static OrderService orderService = new OrderService();
+    private static UserService userService = new UserService();
 
     /**
     * @return true if date is not available for current car
     *
     */
     public static boolean checkDateAvailability(Car car, LocalDateTime start, LocalDateTime end) {
-
 
         List<LocalDateTime> startDates = orderService.findAll().stream()
                 .filter(order -> order.getCar().equals(car))
@@ -46,5 +47,9 @@ public class Validations {
                         .anyMatch(entry -> entry.getKey().isBefore(end) && entry.getValue().isAfter(start));
 
         return notValidDate;
+    }
+
+    public static boolean doesPasswordExist(String pass) {
+        return userService.findAllUsers().stream().anyMatch(x -> BCrypt.checkpw(pass, x.getPassword()));
     }
 }

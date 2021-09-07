@@ -21,7 +21,6 @@ public class Login implements Command {
             return "WEB-INF/login.jsp";
         }
 
-//        TODO check user is logged
         Optional<User> user;
 
         try {

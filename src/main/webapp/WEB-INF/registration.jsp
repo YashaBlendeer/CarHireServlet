@@ -44,6 +44,9 @@
                        class="form-control" minlength="1" maxlength="25"/>
             </div>
         </div>
+        <c:if test="${requestScope.userAlreadyExists != null}">
+            <p style="font-size: 12px; color: #FF1C19;">${requestScope.userAlreadyExists}</p>
+        </c:if>
         <div class="form-group">
             <div class="col-sm-9">
                 <label class="validation-message">Pass</label>
@@ -51,7 +54,9 @@
                        class="form-control" minlength="1" maxlength="25"/>
             </div>
         </div>
-
+        <c:if test="${requestScope.passAlreadyExists != null}">
+            <p style="font-size: 12px; color: #FF1C19;">${requestScope.passAlreadyExists}</p>
+        </c:if>
         <div class="form-group">
             <div class="col-sm-9">
                 <button style="width: 200px; margin-top: 10px"  type="submit" class="btn btn-primary btn-block">Sign
@@ -59,7 +64,6 @@
             </div>
         </div>
 
-        <h2><span class="text-success" th:utext="${successMessage}"></span></h2>
     </form>
 
     <form action="/login" method="get">
